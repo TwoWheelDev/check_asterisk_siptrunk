@@ -5,7 +5,7 @@ This plugin will check the status of a SIP Peer via the Asterisk Management Inte
 
 Usage: check_asterisk_siptrunk.pl [ -v|--verbose ]  [--host|-H host] [--port|-P port]
                                   --user AMIUser  --pass AMIPass  --peer SIP Peer
-
+```
  -?, --usage
    Print usage information
  -h, --help
@@ -24,6 +24,7 @@ Usage: check_asterisk_siptrunk.pl [ -v|--verbose ]  [--host|-H host] [--port|-P 
    Seconds before plugin times out (default: 15)
  -v, --verbose
    Show details for command-line debugging (can repeat up to 3 times)
+```
 
 ## Requirements
 
