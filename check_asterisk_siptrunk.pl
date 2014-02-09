@@ -29,7 +29,7 @@ $PROGNAME = basename($0);
 
 # Instantiate Nagios::Plugin object (the 'usage' parameter is mandatory)
 my $p = Nagios::Plugin->new(
-        usage => "Usage: %s [ -v|--verbose ]  [-H|--host host] [-P|--port port]
+        usage => "Usage: %s [ -v|--verbose ]  [--host|-H host] [--port|-P port]
                   --user AMIUser  --pass AMIPass  --peer SIP Peer",
         version => $VERSION,
         blurb => 'This plugin will check the status of a SIP Peer via the Asterisk Management Interface (AMI)',
@@ -41,12 +41,12 @@ my $p = Nagios::Plugin->new(
 
 $p->add_arg(
 	spec => 'host|H:s',
-	help => qq{-H <host> IP Address for AMI (Default: 127.0.0.1)},
+	help => qq{--host|-H <host> IP Address for AMI (Default: 127.0.0.1)},
     default => '127.0.0.1'
     );
 $p->add_arg(
 	spec => 'port|P:s',
-	help => qq{-P <port> Port for AMI (Default: 5038)},
+	help => qq{--port|-P <port> Port for AMI (Default: 5038)},
     default => '5038'
     );
 $p->add_arg(
