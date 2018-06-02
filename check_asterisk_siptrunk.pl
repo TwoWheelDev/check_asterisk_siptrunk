@@ -12,7 +12,7 @@
 use strict;
 use warnings;
 
-use Nagios::Plugin;
+use Monitoring::Plugin;
 use File::Basename;
 use Asterisk::AMI;
 no warnings qw(Asterisk::AMI);
@@ -27,8 +27,8 @@ $PROGNAME = basename($0);
 # define and get the command line options.                                   #
 ##############################################################################
 
-# Instantiate Nagios::Plugin object (the 'usage' parameter is mandatory)
-my $p = Nagios::Plugin->new(
+# Instantiate Monitoring::Plugin object (the 'usage' parameter is mandatory)
+my $p = Monitoring::Plugin->new(
         usage => "Usage: %s [ -v|--verbose ]  [--host|-H host] [--port|-P port]
                   --user AMIUser  --pass AMIPass  --peer SIP Peer",
         version => $VERSION,
@@ -121,13 +121,13 @@ $response = $astman->get_response($actionid);
 # Output the result and exit                                                 #
 ##############################################################################
 
-$p->nagios_exit( return_code => 'CRITICAL', 
+$p->plugin_exit( return_code => 'CRITICAL', 
                  message => $p->opts->peer . " is $message" ) if ($result == 1);
 
-$p->nagios_exit( return_code => 'UNKNOWN', 
+$p->plugin_exit( return_code => 'UNKNOWN', 
                  message => $message ) if ($result == 2);
 
-$p->nagios_exit( return_code => 'OK', 
+$p->plugin_exit( return_code => 'OK', 
                  message => $p->opts->peer . " is $message" );
 
 
